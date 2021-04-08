@@ -395,6 +395,7 @@ export const getLegendDataSelectedWithOthers = createSelector(
   [getLegendDataSelected, getSortedYColumnOptions],
   getLegendOptionsWithOthers
 );
+
 const MEAN_CALCULATION_OPTIONS = [
   GHG_CALCULATION_OPTIONS.PER_CAPITA.value,
   GHG_CALCULATION_OPTIONS.PER_GDP.value,
@@ -444,14 +445,20 @@ export const getCorrectedChartDataWithOthers = createSelector(
     const isWorldSelected = selectedOptions.regionsSelected.some(
       region => region.value === 'WORLD'
     );
-    const meanCalculation = MEAN_CALCULATION_OPTIONS.includes(
+    const NOT_CORRECTED_CALCULATION_OPTIONS = [
+      GHG_CALCULATION_OPTIONS.PER_CAPITA.value,
+      GHG_CALCULATION_OPTIONS.PER_GDP.value
+    ];
+    const notCorrectedCalculation = NOT_CORRECTED_CALCULATION_OPTIONS.includes(
       selectedOptions.calculationSelected
     );
     if (
       (!data[0].yOthers && data[0].yOthers !== 0) ||
       !isWorldSelected ||
-      meanCalculation
-    ) { return data; }
+      notCorrectedCalculation
+    ) {
+      return data;
+    }
 
     const worldData = rawData.find(d => d.iso_code3 === 'WORLD').emissions;
     return data.map(d => {

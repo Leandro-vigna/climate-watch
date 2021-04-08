@@ -17,7 +17,7 @@ describe('getCorrectedChartDataWithOthers', () => {
     ).toBe(null);
   });
 
-  it('Returns data when the calculation is part of the mean calculation options', () => {
+  it('Returns data when the calculation is part of the not corrected calculation options', () => {
     data = [{ x: 1990, yOthers: 0, y1: 300000, y2: 600000 }];
     expect(
       getCorrectedChartDataWithOthers.resultFunc(data, selectedOptions, rawData)
