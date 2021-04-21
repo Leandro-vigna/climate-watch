@@ -54,3 +54,12 @@ bower.json
 # Editors
 .vscode/
 .idea/
+
+# Vite Ruby
+/public/vite
+/public/vite-dev
+/public/vite-test
+node_modules
+*.local
+.DS_Store
+

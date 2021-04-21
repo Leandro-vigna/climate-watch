@@ -37,7 +37,7 @@
     <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0069/4623.js" async="async"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch,es6,Array.prototype.includes,String.prototype.includes"></script>
     <%= csrf_meta_tags %>
-
+     <%= vite_client_tag %>
     <%= stylesheet_link_tag 'application', media: 'all',
       'data-turbolinks-track': 'reload' %>
     <script><%= raw "window.__data = #{@data.to_json};" %></script>
@@ -49,11 +49,19 @@
       <meta name="robots" content="noindex">
     <% end %>
 
-    <%= javascript_pack_tag 'main' %>
+    <%= vite_javascript_tag 'main', defer: true %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
 
-    <% if @is_production %>
-      <%= stylesheet_pack_tag 'main' %>
-    <% end %>
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>
