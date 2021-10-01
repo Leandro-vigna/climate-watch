@@ -41,6 +41,7 @@ Table of Contents:
 - [Ruby](https://www.ruby-lang.org/en/) v2.5.9
 - [Bundler](https://bundler.io/) v1.17.3
 - [nodejs](https://nodejs.org/en/) v12.13
+- [sidekiq](https://github.com/mperham/sidekiq)
 
 Refer to each dependency's official documentation for installation instructions for your specific operating system.
 
@@ -113,6 +114,8 @@ This project uses [Terraform](https://www.terraform.io/) as an [infrastructure a
 It's worth noting that the infrastructure includes an [AWS EC2](https://aws.amazon.com/ec2/) server that is partially configured by Terraform, but that requires additional setup. You can find more details in the `/infrastructure/templates/server_setup.sh.tpl` file.
 
 For the application to function properly, certain [environment variables](https://en.wikipedia.org/wiki/Environment_variable) need to be set within the execution environment (aka the servers). Said variables are loaded through a `.env` file that can be found in the server's `/var/www/climatewatch/shared/.env` path.
+
+Excluded from the above is the setup of [sidekiq](https://github.com/mperham/sidekiq), which must be configured manually. It's recommended to configure it [as a systemd service](https://github.com/mperham/sidekiq/blob/master/examples/systemd/sidekiq.service). Be sure to add the corresponding [environment variables](https://en.wikipedia.org/wiki/Environment_variable) to the service file, and to ensure they match the values on the main app's configuration.
 
 ## Deployment
 
