@@ -6,7 +6,7 @@ resource "aws_elasticache_cluster" "redis_cluster" {
   parameter_group_name = "default.redis6.x"
   engine_version       = var.redis_engine_version
   port                 = var.redis_port
-  security_group_ids = [aws_security_group.redis.id]
+  security_group_ids   = [aws_security_group.redis.id]
 }
 
 resource "aws_security_group" "redis" {
@@ -15,10 +15,10 @@ resource "aws_security_group" "redis" {
   name                   = "Redis-ingress"
   revoke_rules_on_delete = true
   tags = merge(
-  {
-    Name = "Redis SG"
-  },
-  var.tags
+    {
+      Name = "Redis SG"
+    },
+    var.tags
   )
 }
 

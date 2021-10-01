@@ -88,10 +88,10 @@ resource "aws_security_group" "site_server_world_egress_security_group" {
 }
 
 resource "aws_security_group_rule" "world_egress" {
-  type      = "egress"
-  from_port = 0
-  to_port   = 0
-  protocol  = "-1"
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
   cidr_blocks = ["0.0.0.0/0"]
 
   security_group_id = aws_security_group.site_server_world_egress_security_group.id
@@ -106,7 +106,7 @@ resource "aws_instance" "server" {
   vpc_security_group_ids = concat([
     aws_security_group.site_server_ssh_security_group.id,
     aws_security_group.site_server_http_security_group.id,
-    aws_security_group.site_server_world_egress_security_group.id], var.security_group_ids)
+  aws_security_group.site_server_world_egress_security_group.id], var.security_group_ids)
   associate_public_ip_address = true
   user_data                   = var.user_data
 
@@ -143,9 +143,9 @@ resource "aws_eip" "elastic_ip" {
   instance = aws_instance.server.id
   vpc      = true
   tags = merge(
-  {
-    Name = "${var.project}-ip-${var.environment}"
-  },
-  var.tags
+    {
+      Name = "${var.project}-ip-${var.environment}"
+    },
+    var.tags
   )
 }

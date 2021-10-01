@@ -25,7 +25,7 @@ variable "redis_user_name" {
 variable "redis_user_group" {
   type        = string
   description = "Redis user group name"
-  default = "cwusergroup"
+  default     = "cwusergroup"
 }
 
 variable "tags" {
@@ -36,19 +36,19 @@ variable "tags" {
 variable "redis_engine_version" {
   type        = string
   description = "Redis engine version"
-  default = "6.x"
+  default     = "6.x"
 }
 
 variable "redis_instance_node_type" {
   type        = string
   description = "Redis instance type class"
-  default = "cache.t3.micro"
+  default     = "cache.t3.micro"
 }
 
 variable "redis_port" {
   type        = string
   description = "Port to access Redis"
-  default = 6379
+  default     = 6379
 }
 
 variable "vpc_cidr_block" {

@@ -69,9 +69,9 @@ resource "aws_lb_target_group_attachment" "site_lb_target_group_attachment" {
 #}
 
 resource "aws_acm_certificate" "domain_cert" {
-  domain_name       = var.domain
+  domain_name               = var.domain
   subject_alternative_names = var.alt_domains
-  validation_method = "DNS"
+  validation_method         = "DNS"
 
   lifecycle {
     create_before_destroy = true

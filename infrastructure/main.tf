@@ -86,17 +86,17 @@ module "redis" {
   source = "./modules/redis"
 
   redis_cluster_name = "sidekiq"
-  redis_user_name = "sidekiq"
-  project                     = var.project_name
-  tags                        = local.tags
-  vpc_id                      = data.aws_vpc.default_vpc.id
-  vpc_cidr_block              = data.aws_vpc.default_vpc.cidr_block
+  redis_user_name    = "sidekiq"
+  project            = var.project_name
+  tags               = local.tags
+  vpc_id             = data.aws_vpc.default_vpc.id
+  vpc_cidr_block     = data.aws_vpc.default_vpc.cidr_block
 }
 
 module "prod_server" {
   source                    = "./modules/server"
   project                   = var.project_name
-  environment = "production"
+  environment               = "production"
   region                    = var.aws_region
   tags                      = local.tags
   vpc                       = data.aws_vpc.default_vpc
@@ -113,7 +113,7 @@ module "prod_load_balancer" {
   vpc_id        = data.aws_vpc.default_vpc.id
   subnet_ids    = data.aws_subnet_ids.subnet_ids.ids
   project       = var.project_name
-  environment = "production"
+  environment   = "production"
   ec2_target_id = module.prod_server.ec2_instance_id
   domain        = "climatewatchdata.org"
   alt_domains   = ["beta.climatewatchdata.org", "climatewatchdata.org", "www.climatedata.org", "climatedata.org"]
@@ -127,7 +127,7 @@ resource "aws_lb_listener_rule" "prod_redirect_domains" {
     type = "redirect"
     redirect {
       status_code = "HTTP_301"
-      protocol = "HTTPS"
+      protocol    = "HTTPS"
       host        = "www.climatewatchdata.org"
     }
   }
@@ -142,7 +142,7 @@ resource "aws_lb_listener_rule" "prod_redirect_domains" {
 module "staging_server" {
   source                    = "./modules/server"
   project                   = var.project_name
-  environment = "staging"
+  environment               = "staging"
   region                    = var.aws_region
   tags                      = local.tags
   vpc                       = data.aws_vpc.default_vpc
@@ -158,7 +158,7 @@ module "staging_load_balancer" {
   source        = "./modules/lb"
   vpc_id        = data.aws_vpc.default_vpc.id
   subnet_ids    = data.aws_subnet_ids.subnet_ids.ids
-  environment = "staging"
+  environment   = "staging"
   project       = var.project_name
   ec2_target_id = module.staging_server.ec2_instance_id
   domain        = "staging.climatewatchdata.org"

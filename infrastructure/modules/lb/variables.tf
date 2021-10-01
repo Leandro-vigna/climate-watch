@@ -16,7 +16,7 @@ variable "domain" {
 variable "alt_domains" {
   type        = list(string)
   description = "Alternative domains to attach to the certificate"
-  default = []
+  default     = []
 }
 
 variable "vpc_id" {
