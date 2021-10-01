@@ -36,12 +36,18 @@ Table of Contents:
 
 ### System dependencies
 
-- postgres 9.6
+- [PostgreSQL](https://www.postgresql.org/) v13.3
+- [Redis](https://redis.io/) v6
+- [Ruby](https://www.ruby-lang.org/en/) v2.5.9
+- [Bundler](https://bundler.io/) v1.17.3
+- [nodejs](https://nodejs.org/en/) v12.13
+
+Refer to each dependency's official documentation for installation instructions for your specific operating system.
 
 ### Installing application dependencies
 
 ```
-yarn run js:install
+yarn
 ```
 
 and then
@@ -55,12 +61,11 @@ These will satisfy both the frontend and backend's dependency requirements.
 #### Setting up the Rails environment
 
 Copy the sample `.env.sample` file to `.env` and modify it as needed to fit the
-project's settings. At the very least you'll need to have the `POSTGRES_URL` and `SHARED_POSTGRES_URL`
+project's settings. At the very least you'll need to have the `POSTGRES_URL`
 env variable.
 
 ```
 POSTGRES_URL=postgresql://postgres@localhost/climate-watch_development
-SHARED_POSTGRES_URL=postgresql://postgres@localhost/climate-watch-shared_development
 ```
 
 #### Setting up the database
@@ -101,15 +106,19 @@ yarn run js:server
 
 Point your browser to `http://localhost:3000/`. Ta-da!
 
-### Launching the app with docker
-```docker-compose up```
-Ta-da!
-
 ## Infrastructure
 
 This project uses [Terraform](https://www.terraform.io/) as an [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code) solution to deploy to [AWS](https://aws.amazon.com/). All this code can be found in the `/infrastructure` folder.
 
 It's worth noting that the infrastructure includes an [AWS EC2](https://aws.amazon.com/ec2/) server that is partially configured by Terraform, but that requires additional setup. You can find more details in the `/infrastructure/templates/server_setup.sh.tpl` file.
+
+For the application to function properly, certain [environment variables](https://en.wikipedia.org/wiki/Environment_variable) need to be set within the execution environment (aka the servers). Said variables are loaded through a `.env` file that can be found in the server's `/var/www/climatewatch/shared/.env` path.
+
+## Deployment
+
+Deployment is done using [Capistrano](https://capistranorb.com/) and the configuration files included in the project's code base.
+Learning the basics about deploying with Capistrano should be enough to allow you to deploy this project (provided you have ssh access to the respective servers).
+If you need to modify the deployment process, you can do so through the usual Capistrano configuration files included in the project.
 
 ## Frontend Architectural choices
 
