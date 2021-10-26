@@ -184,7 +184,8 @@ module.exports = {
     },
     fallback: {
       path: require.resolve('path-browserify'),
-      process: false,
+      browser: require.resolve('process/browser'),
+      util: require.resolve('util/'),
       fs: false,
       tls: false,
       net: false,
@@ -192,8 +193,7 @@ module.exports = {
       http: false,
       https: false,
       stream: false,
-      crypto: false,
-      querystring: false
+      crypto: false
     }
   },
 
