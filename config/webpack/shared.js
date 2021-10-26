@@ -193,9 +193,7 @@ module.exports = {
       https: false,
       stream: false,
       crypto: false,
-      querystring: false,
-      util: false,
-      browser: false
+      querystring: false
     }
   },
 
