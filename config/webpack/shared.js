@@ -192,7 +192,8 @@ module.exports = {
       http: false,
       https: false,
       stream: false,
-      crypto: false
+      crypto: false,
+      querystring: false
     }
   },
 

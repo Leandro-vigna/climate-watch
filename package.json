@@ -87,6 +87,7 @@
     "mini-css-extract-plugin": "^1.4.1",
     "moment-timezone": "^0.5.32",
     "node-sass": ">=4.13.1",
+    "path-browserify": "^1.0.1",
     "path-complete-extname": "^1.0.0",
     "pluralize": "^8.0.0",
     "post-robot": "8.0.26",
@@ -146,16 +147,15 @@
     "screenfull": "3.3.2",
     "slick-carousel": "^1.8.1",
     "style-loader": "0.18.2",
+    "styled-components": "^4.0.0",
     "svg-sprite-loader": "6.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "styled-components": "^4.0.0",
     "topojson-client": "3.0.0",
     "uuid": "3.2.1",
+    "webpack": "^5.1.0",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.5.0",
-    "webpack": "^5.1.0",
-    "webpack-merge": "4.1.0",
-    "path-browserify": "^1.0.1"
+    "webpack-merge": "4.1.0"
   },
   "devDependencies": {
     "@webpack-cli/init": "^1.1.3",
