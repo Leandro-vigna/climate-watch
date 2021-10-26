@@ -186,6 +186,7 @@ module.exports = {
       path: require.resolve('path-browserify'),
       browser: require.resolve('process/browser'),
       util: require.resolve('util/'),
+      querystring: require.resolve('querystring-es3'),
       fs: false,
       tls: false,
       net: false,
