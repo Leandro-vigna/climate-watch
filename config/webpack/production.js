@@ -17,7 +17,6 @@ module.exports = merge(sharedConfig, {
     minimize: true,
     minimizer: [new TerserPlugin()]
   },
-  target: 'defaults',
   plugins: [
     new webpack.EnvironmentPlugin([
       'GOOGLE_ANALYTICS_ID',
