@@ -55,7 +55,6 @@
     <%= javascript_pack_tag 'main', defer: true, 'data-turbolinks-track': 'reload' %>
 
     <% if @use_precompiled_assets %>
-      <%= stylesheet_pack_tag 'main' %>
       <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
       <script>
         window.OneSignal = window.OneSignal || [];
