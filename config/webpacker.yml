@@ -90,10 +90,10 @@ production: &production
   extract_css: true
 
   # Cache manifest.json for performance
-  cache_manifest: true
+  cache_manifest: false
 
 staging:
   <<: *default
   compile: true
   extract_css: true
-  cache_manifest: true
+  cache_manifest: false
