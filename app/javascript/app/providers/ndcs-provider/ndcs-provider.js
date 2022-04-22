@@ -11,16 +11,26 @@ const NDCSProvider = props => {
     indicatorSlugs,
     additionalIndicatorSlugs,
     subcategory,
-    document
+    document,
+    location
   } = props;
 
   useEffect(() => {
+    /* console.log('fetchNDCS', {
+     *   overrideFilter,
+     *   indicatorSlugs,
+     *   additionalIndicatorSlugs,
+     *   subcategory,
+     *   document,
+     *   location
+     * }); */
     fetchNDCS({
       overrideFilter,
       indicatorSlugs,
       additionalIndicatorSlugs,
       subcategory,
-      document
+      document,
+      location
     });
   }, [subcategory, document]);
 

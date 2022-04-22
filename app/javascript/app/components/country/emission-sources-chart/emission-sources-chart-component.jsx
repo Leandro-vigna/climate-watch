@@ -160,7 +160,8 @@ function EmissionSourcesChart({
       </div>
       <NDCSProvider
         overrideFilter
-        additionalIndicatorSlugs={[INDICATOR_SLUGS.emissions]}
+        location={iso}
+        indicatorSlugs={[INDICATOR_SLUGS.emissions]}
       />
       <EmissionsProvider filters={emissionProviderFilters} />
       <ReactTooltip id="emissions-chart-tooltip" html />

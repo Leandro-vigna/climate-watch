@@ -95,6 +95,7 @@ function CountryClimateCommitments({
       <CountriesDocumentsProvider location={iso} />
       <NDCSProvider
         overrideFilter
+        location={iso}
         indicatorSlugs={['nz_status', INDICATOR_SLUGS.enhancements]}
       />
     </div>

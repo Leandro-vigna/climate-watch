@@ -14,7 +14,8 @@ const fetchNDCS = createThunkAction('fetchNDCS', props => (dispatch, state) => {
     indicatorSlugs,
     subcategory,
     additionalIndicatorSlugs,
-    document
+    document,
+    location
   } = props || {};
   const { ndcs } = state();
   const params = [];
@@ -30,6 +31,9 @@ const fetchNDCS = createThunkAction('fetchNDCS', props => (dispatch, state) => {
   }
   if (document) {
     params.push(`document=${document}`);
+  }
+  if (location) {
+    params.push(`location=${location}`);
   }
 
   const promises = [];
